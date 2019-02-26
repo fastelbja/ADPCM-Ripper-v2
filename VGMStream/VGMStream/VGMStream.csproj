@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FF5955F6-9818-425C-B60C-15EAE3774DB8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VGMStream</RootNamespace>
+    <AssemblyName>VGMStream</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Decoders\ADXENC_Decoder.cs" />
+    <Compile Include="Decoders\ADX_Decoder.cs" />
+    <Compile Include="Decoders\DSP_Decoder.cs" />
+    <Compile Include="Decoders\PCM16_Decoder.cs" />
+    <Compile Include="Decoders\PCM8_Decoder.cs" />
+    <Compile Include="Decoders\PSX_Decoder.cs" />
+    <Compile Include="Formats\CMN_ADX.cs" />
+    <Compile Include="Formats\CMN_ADXENC.cs" />
+    <Compile Include="Formats\CMN_FSB4.cs" />
+    <Compile Include="Formats\CMN_FSB5.cs" />
+    <Compile Include="Formats\CMN_RIFF.cs" />
+    <Compile Include="Formats\CMN_RIFX.cs" />
+    <Compile Include="Formats\NGC_CAF.cs" />
+    <Compile Include="Formats\NGC_THP.cs" />
+    <Compile Include="Formats\PS2_ADS.cs" />
+    <Compile Include="Formats\PS2_AUS.cs" />
+    <Compile Include="Formats\PS2_MIB.cs" />
+    <Compile Include="Formats\PS2_NPSF.cs" />
+    <Compile Include="Formats\PS2_SFS.cs" />
+    <Compile Include="Formats\PS2_SVAG.cs" />
+    <Compile Include="Formats\PS2_VAG.cs" />
+    <Compile Include="Formats\PS2_VIG.cs" />
+    <Compile Include="Formats\PS2_VPK.cs" />
+    <Compile Include="Formats\PS3_PAMF.cs" />
+    <Compile Include="Formats\PS3_XVAG.cs" />
+    <Compile Include="Formats\PSP_AT3.cs" />
+    <Compile Include="Formats\PSP_PMSF.cs" />
+    <Compile Include="Formats\PSVITA_AT9.cs" />
+    <Compile Include="Formats\WII_RAK.cs" />
+    <Compile Include="Formats\WII_SNS.cs" />
+    <Compile Include="Formats\WII_BRSTM.cs" />
+    <Compile Include="Formats\X360_XMA.cs" />
+    <Compile Include="IVGMDecoder.cs" />
+    <Compile Include="IVGMFormat.cs" />
+    <Compile Include="IVGMLayout.cs" />
+    <Compile Include="Layout\Blocked.cs" />
+    <Compile Include="Layout\BlockedFnts.cs" />
+    <Compile Include="Layout\Interleave.cs" />
+    <Compile Include="Layout\NoLayout.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VGM_Channel.cs" />
+    <Compile Include="VGM_Decoder_Type.cs" />
+    <Compile Include="VGM_Layout_Type.cs" />
+    <Compile Include="VGM_Stream.cs" />
+    <Compile Include="VGM_Utils.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\StreamReader\StreamReader\StreamReader.csproj">
+      <Project>{A7AA0C77-EED0-423E-818D-6BE89C03FAC1}</Project>
+      <Name>StreamReader</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

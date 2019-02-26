@@ -147,16 +147,6 @@
     <None Include="Resources\shell32_5.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\StreamReader\StreamReader\StreamReader.csproj">
-      <Project>{A7AA0C77-EED0-423E-818D-6BE89C03FAC1}</Project>
-      <Name>StreamReader</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\VGMStream\VGMStream\VGMStream.csproj">
-      <Project>{FF5955F6-9818-425C-B60C-15EAE3774DB8}</Project>
-      <Name>VGMStream</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\shell32_255.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -183,6 +173,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\shell32_23.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\StreamReader\StreamReader\StreamReader.csproj">
+      <Project>{a7aa0c77-eed0-423e-818d-6be89c03fac1}</Project>
+      <Name>StreamReader</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VGMStream\VGMStream\VGMStream.csproj">
+      <Project>{ff5955f6-9818-425c-b60c-15eae3774db8}</Project>
+      <Name>VGMStream</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

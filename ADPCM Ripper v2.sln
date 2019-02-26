@@ -1,11 +1,13 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual C# Express 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2000
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADPCM Ripper v2", "ADPCM Ripper v2\ADPCM Ripper v2.csproj", "{7A03CEF6-3F22-4395-AF78-09E2EA231A63}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreamReader", "..\StreamReader\StreamReader\StreamReader.csproj", "{A7AA0C77-EED0-423E-818D-6BE89C03FAC1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StreamReader", "StreamReader\StreamReader\StreamReader.csproj", "{A7AA0C77-EED0-423E-818D-6BE89C03FAC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VGMStream", "..\VGMStream\VGMStream\VGMStream.csproj", "{FF5955F6-9818-425C-B60C-15EAE3774DB8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VGMStream", "VGMStream\VGMStream\VGMStream.csproj", "{FF5955F6-9818-425C-B60C-15EAE3774DB8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -28,5 +30,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {55D89F0C-81EB-4909-BD4C-CBF1AF195E7C}
 	EndGlobalSection
 EndGlobal
