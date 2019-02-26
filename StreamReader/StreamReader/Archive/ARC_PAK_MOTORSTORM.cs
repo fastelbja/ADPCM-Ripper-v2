@@ -13,17 +13,14 @@ namespace StreamReader.Container
             if (System.IO.Path.GetExtension(file.Filename).ToUpper() != ".PAK")
                 return null;
 
-            byte[] filenameBuffer = null;
-
             FST tmpFST = new FST();
 
             UInt64 offset = file.FileStartOffset;
 
-            // check for AFS marker
+            // check for marker ID
             if ((fileReader.Read_16bits(offset+0x0A)  != 0xA3DA))
                 return null;
 
-            //string archiveName = fileReader.Read_String(offset + 0x08, 0x50);
             uint fileCount = (uint)fileReader.Read_32bits(offset + 0x08) ^ 0xa3da79b6;
             uint filenameSize = fileReader.Read_32bits(offset + 0x0C);
             uint folderNameSize = fileReader.Read_32bits(offset + 0x10);
