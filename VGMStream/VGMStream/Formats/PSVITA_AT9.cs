@@ -19,7 +19,7 @@ namespace VGMStream
         {
             get
             {
-                return "Sony PSVITA Atrac9 Audio File";
+                return "Sony Atrac9 Audio File";
             }
         }
 

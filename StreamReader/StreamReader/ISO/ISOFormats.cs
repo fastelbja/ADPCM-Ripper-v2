@@ -61,9 +61,15 @@ namespace StreamReader
             {
                 if (((buffer[0] == 'R') || (buffer[0] == 'S')) && (MemoryReader.ReadLong(ref buffer, 0x18) == 0xA39E1C5D))
                 {
-                    this.ISOType = ISO_Type.WII;
-                    InitWII(sPath);
-                    return true;
+                    if(System.IO.Directory.Exists("decryption_keys"))
+                    {
+                        if (System.IO.File.Exists("decryption_keys\\ckeys.bin"))
+                        {
+                            this.ISOType = ISO_Type.WII;
+                            InitWII(sPath);
+                            return true;
+                        }
+                    }
                 }
             }
             return false;
@@ -75,11 +81,14 @@ namespace StreamReader
 
             if (buffer.Length == 0x800)
             {
-                if (((buffer[0] == 'W') || (buffer[0] == 'U')) && (MemoryReader.ReadLong(ref buffer, 0x18) == 0x00000000))
+                if (((buffer[0] == 'W') && (buffer[1] == 'U') && (buffer[2] == 'P')) && (MemoryReader.ReadLong(ref buffer, 0x18) == 0x00000000))
                 {
-                    this.ISOType = ISO_Type.WIIU;
-                    InitWII(sPath);
-                    return true;
+                    if (System.IO.File.Exists("decrypted_keys\\ckeysu.bin"))
+                    {
+                        this.ISOType = ISO_Type.WIIU;
+                        //InitWIIU(sPath);
+                        return true;
+                    }
                 }
             }
             return false;

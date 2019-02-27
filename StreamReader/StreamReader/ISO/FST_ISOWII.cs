@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Security.Cryptography;
 using System.IO;
 
 namespace StreamReader
@@ -927,7 +923,7 @@ namespace StreamReader
         }
 
         private WII_Image m_WII_Image = new WII_Image();
-        private byte[] bin_key = { 0xeb, 0xe4, 0x2a, 0x22, 0x5e, 0x85, 0x93, 0xe4, 0x48, 0xd9, 0xc5, 0x45, 0x73, 0x81, 0xaa, 0xf7 };
+        private byte[] bin_key = new byte[0x10];
 
         private CEncryption AES_Decrypt = new CEncryption();
 
@@ -976,6 +972,13 @@ namespace StreamReader
             UInt64 chan_tbl_offset;
 
             byte[] buffer;
+
+            // Read common keys...
+            FileStream fs = new FileStream("decryption_keys\\ckeys.bin",FileMode.Open);
+            BinaryReader br = new BinaryReader(fs);
+
+            br.Read(this.bin_key, 0, 16);
+            br.Close();
 
             buffer = m_FileReader.Read(0x40000, 16);
 

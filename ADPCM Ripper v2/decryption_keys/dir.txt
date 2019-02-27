@@ -1,0 +1,4 @@
+﻿Please put your decryption files here :
+
+For Wii :	name it ckeys.bin
+For WiiU :	name it ckeysu.bin
