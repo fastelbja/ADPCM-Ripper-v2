@@ -96,9 +96,6 @@ namespace ADPCM_Ripper_v2
             IVGMFormat ripFormat = null;
             VGM_Stream vgmStream = new VGM_Stream();
 
-            if (sPath.ToString().Contains("00.brstm"))
-                i=0;
-
             uint channel_count=0;
             uint sample_rate=0;
             uint interleave=0;
@@ -120,9 +117,6 @@ namespace ADPCM_Ripper_v2
 
                 filename = string.Empty;
                 i = 0;
-
-                if (Offset >= 23855104)
-                    i = i;
 
                 if ((currentOffset + (UInt64)buffer.Length) > fileLength)
                     buffer = fReader.Read(Offset, (uint)(fileLength - currentOffset));
@@ -700,8 +694,10 @@ namespace ADPCM_Ripper_v2
                             {
                                 for(j=0; j<0x100;j+=4) 
                                 {
-                                    // Search for 'vorb' or 'cue '
-                                    if ((MemoryReader.ReadLongBE(ref buffer, i + j) == 0x766F7262) || (MemoryReader.ReadLongBE(ref buffer, i + j) == 0x63756520))
+                                    // Search for 'vorb' or 'cue ' or 'JUNK'
+                                    if ((MemoryReader.ReadLongBE(ref buffer, i + j) == 0x766F7262) 
+                                        || (MemoryReader.ReadLongBE(ref buffer, i + j) == 0x63756520)
+                                        || (MemoryReader.ReadLongBE(ref buffer, i + j) == 0x4A554E4B))
                                     {
                                         ripFormat = new CMN_RIFX();
                                         LengthOfRip = MemoryReader.ReadLongBE(ref buffer, i + 0x04) + 0x08;

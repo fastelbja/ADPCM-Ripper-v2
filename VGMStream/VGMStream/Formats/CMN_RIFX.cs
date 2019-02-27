@@ -11,7 +11,7 @@ namespace VGMStream
         {
             get
             {
-                return "OGG";
+                return "wem";
             }
         }
 
@@ -46,11 +46,13 @@ namespace VGMStream
                 return 0;
 
             // Check for Mark ID ("WAVE" + "fmt ")
-            if ((fileReader.Read_32bitsBE(offset + 0x04) == 0x57415645) && (fileReader.Read_32bitsBE(offset + 0x0C) == 0x666D7420))
+            if ((fileReader.Read_32bitsBE(offset + 0x08) == 0x57415645) && (fileReader.Read_32bitsBE(offset + 0x0C) == 0x666D7420))
             {
                 for (UInt64 i = 0; i < 0x100; i+=4)
                 {
-                    if ((fileReader.Read_32bitsBE(offset + i) == 0x766F7262) || (fileReader.Read_32bitsBE(offset + i) == 0x63756520))
+                    if ((fileReader.Read_32bitsBE(offset + i) == 0x766F7262) 
+                        || (fileReader.Read_32bitsBE(offset + i) == 0x63756520)
+                        || (fileReader.Read_32bitsBE(offset + i) == 0x4A554E4B))
                     {
                         if (VGM_Utils.CheckSampleRate(fileReader.Read_32bitsBE(offset + 0x18)))
                         {
