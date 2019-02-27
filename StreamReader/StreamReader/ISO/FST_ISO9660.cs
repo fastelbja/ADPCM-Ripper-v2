@@ -133,7 +133,7 @@ namespace StreamReader
                 {
                     bufferOffset = 0;
                     buffer = new byte[f.FolderLength];
-                    buffer = ReadCDBuffer(f.FolderID, f.FolderLength);
+                    buffer = ReadCDBuffer(f.FolderID, f.FolderLength < 0x800 ? 0x800 : f.FolderLength);
 
                     do
                     {
