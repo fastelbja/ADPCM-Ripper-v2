@@ -23,8 +23,6 @@ namespace ADPCM_Ripper_v2
         private int m_currMediaFile;
         private string m_textBoxText;
 
-        private bool SonicStageInstalled = false;
-
         private CListViewSorter lvwColumnSorter;
         
         private static bool m_Cancel = false;
@@ -37,7 +35,6 @@ namespace ADPCM_Ripper_v2
 
             AudioFile audioFile = new AudioFile();
             pgAudioFile.SelectedObject = audioFile;
-            SonicStageInstalled = IsApplictionInstalled("SonicStage 4.3");
         }
 
         private void tsbOpen_Click(object sender, EventArgs e)
@@ -287,13 +284,6 @@ namespace ADPCM_Ripper_v2
 
                         string folderPath = sPath;
 
-                        if (m_FST.FST_Folder[j].FolderName != "\\")
-                        {
-                            folderPath += "\\" + m_FST.FST_Folder[j].FolderName;
-                            if (!Directory.Exists(sPath))
-                                Directory.CreateDirectory(sPath);
-                        }
-
                         if (m_FST.FST_Folder[j].SessionID == m_FST.FST_Session[i].SessionID)
                         {
                             for (int k = 0; k < totalFile; k++)
@@ -320,7 +310,28 @@ namespace ADPCM_Ripper_v2
 
                                     m_fileReader.SetSessionID(m_FST.FST_File[k].SessionID);
 
-                                    string filePath = folderPath + "\\" + m_FST.FST_File[k].Filename;
+                                    int parentidFolder = j;
+                                    int SessionID = m_FST.FST_File[k].SessionID;
+                                    int l = 0;
+                                    string addPath = string.Empty;
+
+                                    if(m_FST.FST_Folder[parentidFolder].FolderName!="\\")
+                                    {
+                                        do
+                                        {
+                                            addPath = m_FST.FST_Folder[parentidFolder].FolderName + "\\" + addPath;
+                                            for (l = 0; l < m_FST.FST_Folder.Count; l++)
+                                            {
+                                                if ((m_FST.FST_Folder[l].FolderID == m_FST.FST_Folder[parentidFolder].ParentID) && 
+                                                    (m_FST.FST_Folder[l].SessionID == SessionID))
+                                                    break;
+                                            }
+
+                                            parentidFolder = l;
+                                        } while (m_FST.FST_Folder[parentidFolder].FolderName != "\\");
+                                    }
+
+                                    string filePath = folderPath + "\\" + addPath + m_FST.FST_File[k].Filename;
 
                                     UInt64 totalLength = m_FST.FST_File[k].FileSize;
                                     uint lengthToRead = 0;
