@@ -658,7 +658,9 @@ namespace ADPCM_Ripper_v2
                         System.IO.Directory.CreateDirectory(System.IO.Path.GetDirectoryName(sPath));
 
                     if (System.IO.File.Exists(sPath))
-                        System.IO.File.Delete(sPath);
+                    {
+                        sPath= System.IO.Path.GetFileNameWithoutExtension(sPath) + "_" + currMediaFile + System.IO.Path.GetExtension(sPath);
+                    }
 
                     FileStream fsOut = new FileStream(sPath,FileMode.CreateNew, FileAccess.Write);
                     BinaryWriter bsOut = new BinaryWriter(fsOut);
